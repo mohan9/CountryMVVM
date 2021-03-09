@@ -60,7 +60,11 @@ class MainFragment : Fragment(), CountryClick {
                 list = it
                 setAdapter(it)
             }
-            Log.e("response", it.toString())
+
+            mainFragmentBinding.countrySearch.visibility = when {
+                it.isEmpty() -> View.VISIBLE
+                else -> View.GONE
+            }
         })
 
         mainFragmentBinding.countrySearch.setOnQueryTextListener(object :
